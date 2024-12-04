@@ -40,6 +40,19 @@
             width: 15px;
             height: 15px;
         }
+
+        .card {
+            height: 300px;
+            /* İstediğiniz yükseklikte sabitleyin */
+            max-height: 300px;
+            /* Max yükseklik */
+            overflow: hidden;
+            /* İçeriğin taşmasını engeller */
+        }
+       
+
+      
+       
     </style>
     <hr>
     @include('components.FlashMessage')
@@ -60,7 +73,7 @@
     </div>
     <div class="row">
         @foreach ($userbooks as $item)
-            <div class="col-md-3">
+            <div class="col-md-3 ">
                 <div class="card bg-dark text-white mb-3">
                     <img src="{{ asset('Frontend/Customer/img/books-default.jpg') }}" class="card-img" alt="...">
                     <div class="card-img-overlay">
@@ -85,10 +98,8 @@
                             <div>
 
                                 @if ($item->status == '0')
-                                    
-                                        <div class="badge bg-danger mb-1">ONAY BEKLENİYOR</div>
-                                        <div class="spinner"></div>
-                                    
+                                    <div class="badge bg-danger mb-1">ONAY BEKLENİYOR</div>
+                                    <div class="spinner"></div>
                                 @else
                                     <span class="badge bg-success">
                                         ONAYLANDI
@@ -105,12 +116,6 @@
                         <p class="card-text">
                             {{ mb_substr(ucwords($item->book->content), 0, 250) }}
                         </p>
-                        <p class="card-text">
-
-                            <i class="fas fa-clock    "></i>
-                            {{ $item->book->created_at }}
-                        </p>
-
                     </div>
                 </div>
             </div>

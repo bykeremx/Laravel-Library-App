@@ -9,6 +9,16 @@
     <div class="row mt-3 ">
         <h3>Kütüphane Uygulaması</h3>
     </div>
+    <style>
+        .card {
+            height: 300px;
+            /* İstediğiniz yükseklikte sabitleyin */
+            max-height: 300px;
+            /* Max yükseklik */
+            overflow: hidden;
+            /* İçeriğin taşmasını engeller */
+        }
+    </style>
     <hr>
     @include('components.FlashMessage')
     <div class="row mt-1">
