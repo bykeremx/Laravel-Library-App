@@ -38,6 +38,7 @@
                             </span>
                             Card title
                         </span>
+                        <a href="#" class="btn btn-danger btn-sm">Talep Et ! </a>
                     </h5>
                     <p class="card-text">
 
@@ -45,6 +46,7 @@
                         veritatis molestias adipisci eligendi dolores aperiam temporibus!
                     </p>
                     <p class="card-text">Last updated 3 mins ago</p>
+
                 </div>
             </div>
         </div>
