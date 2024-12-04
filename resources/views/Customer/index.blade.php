@@ -10,6 +10,7 @@
         <h3>Kütüphane Uygulaması</h3>
     </div>
     <hr>
+    @include('components.FlashMessage')
     <div class="row mt-1">
         <h5>
             Mecvut Kitaplar
@@ -39,7 +40,9 @@
                                 {{ $item->title }}
                             </span>
                         </h5>
-                        <a href="#" class="btn btn-danger btn-sm">Talep Et ! </a>
+                        @if (Auth::check())
+                            <a href="#" class="btn btn-danger btn-sm">Talep Et ! </a>
+                        @endif
                         <p class="card-text">
                             {{ mb_substr(ucwords($item->content), 0, 250) }}
                         </p>

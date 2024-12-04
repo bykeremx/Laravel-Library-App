@@ -19,7 +19,8 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <form method="POST" action="">
+            @include('components.FlashMessage')
+            <form method="POST" action="{{route("customer-register-post")}}">
                 @csrf
                 <div class="form-group">
                     <label for="first_name">Ad</label>

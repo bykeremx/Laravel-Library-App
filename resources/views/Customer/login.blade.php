@@ -20,7 +20,8 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <form method="POST" action="">
+            @include('components.FlashMessage')
+            <form method="POST" action="{{route("customer-login-post")}}">
                 @csrf
                 <div class="form-group">
                     <label for="email">

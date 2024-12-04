@@ -38,28 +38,56 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{route("customer-index")}}" aria-current="page">
+                            <a class="nav-link active" href="{{ route('customer-index') }}" aria-current="page">
                                 <i class="fas fa-book    "></i>
                                 Kitaplar
                                 </span></a>
                         </li>
-                        <li class="nav-item">
+                        @if (Auth::check())
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ route('customer-index') }}" aria-current="page">
+                                    <i class="fas fa-book    "></i>
+                                    Kitaplarım
+                                    </span></a>
+                            </li>
+                        @endif
 
-                        </li>
                     </ul>
-                    <ul class="navbar-nav me-right mt-2 mt-lg-0">
-                        <li class="nav-item " style="margin-right:5px">
-                            <a class=" btn btn-outline-success rounded-0 shadow-sm " href="{{route("customer-register")}}" aria-current="page">
-                                Üye Ol
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class=" btn btn-outline-primary rounded-0" href="{{ route('customer-login') }}"
-                                aria-current="page">
-                                Giriş Yap !
-                            </a>
-                        </li>
-                    </ul>
+                    @if (!Auth::check())
+                        <ul class="navbar-nav me-right mt-2 mt-lg-0">
+                            <li class="nav-item " style="margin-right:5px">
+                                <a class=" btn btn-outline-success rounded-0 shadow-sm "
+                                    href="{{ route('customer-register') }}" aria-current="page">
+                                    Üye Ol
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class=" btn btn-outline-primary rounded-0" href="{{ route('customer-login') }}"
+                                    aria-current="page">
+                                    Giriş Yap !
+                                </a>
+                            </li>
+                        </ul>
+                    @else
+                        <ul class="navbar-nav me-right mt-2 mt-lg-0">
+                            <li class="nav-item " style="margin-right:5px">
+                                <a class=" btn btn-outline-success rounded-0 shadow-sm "
+                                    href="{{ route('customer-register') }}" aria-current="page">
+                                    <i class="fas fa-user    "></i>
+                                    {{ Auth::user()->name }}
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav me-right mt-2 mt-lg-0">
+                            <li class="nav-item " style="margin-right:5px">
+                                <a class=" btn btn-outline-danger rounded-0 shadow-sm "
+                                    href="{{ route("customer-logout") }}" aria-current="page">
+                                    <i class="fas fa-user    "></i>
+                                    Çıkış Yap !
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
                 </div>
 
             </div>

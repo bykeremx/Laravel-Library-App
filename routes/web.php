@@ -13,3 +13,7 @@ Route::get("/login",[LoginController::class,"LoginPage"])->name("customer-login"
 Route::get("/register",[RegisterController::class,"RegisterPage"])->name("customer-register");
 //register Post 
 Route::post("/register",[RegisterController::class,"RegisterPost"])->name("customer-register-post");
+//login Post --------------------------------
+Route::post("/login",[LoginController::class,"LoginPost"])->name("customer-login-post");
+//logout --------------------------------
+Route::get("/logout",[LoginController::class,"Logout"])->name("customer-logout");

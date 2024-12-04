@@ -14,10 +14,6 @@ class RegisterController extends Controller
     }
     public function RegisterPost(Request $request)
     {
-
-        if ($request->first_name == null or $request->last_name == null or $request->email or $request->password) {
-            return redirect()->back()->with('error', 'Lütfen Gerekli Alanları Doldurun ! ');
-        }
         $newUser = [
             'name' => $request->first_name,
             'surname' => $request->last_name,
@@ -25,7 +21,10 @@ class RegisterController extends Controller
             'password' => $request->password,
         ];
         if(User::create($newUser)){
-            return redirect()->route('customer.login')->with('success', 'Kayıt Başarılı! Giriş Yapabilirsiniz.');
+            return redirect()->route('customer-login')->with('success', 'Kayıt Başarılı! Giriş Yapabilirsiniz.');
+        }
+        else{
+            return redirect()->route('customer-login')->with('error', 'Kayıt olurken bir sorun ile karşılaşıldı ! ');
         }
     }
 }
