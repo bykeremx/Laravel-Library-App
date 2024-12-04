@@ -26,29 +26,29 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
-            <div class="card bg-dark text-white">
-                <img src="{{ asset('Frontend/Customer/img/books-default.jpg') }}" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">
-                        <span class="badge bg-success">
-                            <span class="badge bg-primary">
-                                <i class="fas fa-book    "></i>
+        @foreach ($books as $item)
+            <div class="col-md-3">
+                <div class="card bg-dark text-white mb-3">
+                    <img src="{{ asset('Frontend/Customer/img/books-default.jpg') }}" class="card-img" alt="...">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">
+                            <span class="badge bg-success">
+                                <span class="badge bg-primary">
+                                    <i class="fas fa-book    "></i>
+                                </span>
+                                {{ $item->title }}
                             </span>
-                            Card title
-                        </span>
+                        </h5>
                         <a href="#" class="btn btn-danger btn-sm">Talep Et ! </a>
-                    </h5>
-                    <p class="card-text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, sed similique accusantium nisi
-                        veritatis molestias adipisci eligendi dolores aperiam temporibus!
-                    </p>
-                    <p class="card-text">Last updated 3 mins ago</p>
-
+                        <p class="card-text">
+                            {{ mb_substr(ucwords($item->content), 0, 250) }}
+                        </p>
+                        <p class="card-text">
+                            {{ $item->created_at }}
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-
+        @endforeach
     </div>
 @endsection
