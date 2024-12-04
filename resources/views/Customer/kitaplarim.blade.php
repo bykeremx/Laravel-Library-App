@@ -7,8 +7,40 @@
 
 @section('content')
     <div class="row mt-3 ">
-        <h3>Kütüphane Uygulaması</h3>
+        <h3>Kitaplarım - {{ Auth::user()->name }} {{ Auth::user()->surname }}</h3>
     </div>
+    <style>
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #f3f3f3;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Dönen animasyon */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-text {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .loading-text .spinner {
+            width: 15px;
+            height: 15px;
+        }
+    </style>
     <hr>
     @include('components.FlashMessage')
     <div class="row mt-1">
@@ -27,7 +59,7 @@
         </div>
     </div>
     <div class="row">
-        @foreach ($books as $item)
+        @foreach ($userbooks as $item)
             <div class="col-md-3">
                 <div class="card bg-dark text-white mb-3">
                     <img src="{{ asset('Frontend/Customer/img/books-default.jpg') }}" class="card-img" alt="...">
@@ -35,7 +67,7 @@
                         <h6>
 
                             <i class="fas fa-user    "></i>
-                            {{ $item->author }}
+                            {{ $item->book->author }}
 
                         </h6>
                         <h5 class="card-title">
@@ -43,38 +75,40 @@
                                 <span class="badge bg-primary">
                                     <i class="fas fa-book    "></i>
                                 </span>
-                                {{ $item->title }}
+                                {{ $item->book->title }}
                             </span>
 
                         </h5>
 
                         @if (Auth::check())
-                            <div class="mt-2">
-                                <span class="badge bg-warning p-2 shadow-lgs">
-                                    Mevcut Stok : {{ $item->stock }}
-                                </span>
-                            </div>
                             <hr>
                             <div>
-                                <form action="{{ route('customer-kitabi-talep-et') }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="book_id" value="{{ $item->id }}">
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fas fa-plus    "></i>
-                                        Talep Et ! </a>
-                                    </button>
-                                </form>
+
+                                @if ($item->status == '0')
+                                    
+                                        <div class="badge bg-danger mb-1">ONAY BEKLENİYOR</div>
+                                        <div class="spinner"></div>
+                                    
+                                @else
+                                    <span class="badge bg-success">
+                                        ONAYLANDI
+                                    </span>
+                                    <span class="badge bg-info">
+                                        {{ $item->return_date }}
+                                    </span>
+                                @endif
+
 
 
                             </div>
                         @endif
                         <p class="card-text">
-                            {{ mb_substr(ucwords($item->content), 0, 250) }}
+                            {{ mb_substr(ucwords($item->book->content), 0, 250) }}
                         </p>
                         <p class="card-text">
 
                             <i class="fas fa-clock    "></i>
-                            {{ $item->created_at }}
+                            {{ $item->book->created_at }}
                         </p>
 
                     </div>

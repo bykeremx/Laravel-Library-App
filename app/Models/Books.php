@@ -17,5 +17,10 @@ class Books extends Model
         'book_img'
     ];
     public $timestamps = false;
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_book');
+                    
+    }
     
 }

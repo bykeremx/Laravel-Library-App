@@ -17,3 +17,7 @@ Route::post("/register",[RegisterController::class,"RegisterPost"])->name("custo
 Route::post("/login",[LoginController::class,"LoginPost"])->name("customer-login-post");
 //logout --------------------------------
 Route::get("/logout",[LoginController::class,"Logout"])->name("customer-logout");
+//kitabi Talep et 
+Route::post("/kitabi-talep-et/",[IndexController::class,"borrowBook"])->name("customer-kitabi-talep-et");
+//kitaplarim 
+Route::get("/kitaplarim/",[IndexController::class,"myBooksPage"])->name("customer-kitaplarim");

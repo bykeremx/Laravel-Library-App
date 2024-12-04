@@ -26,5 +26,9 @@ class User extends Authenticatable
         'password',
     ];
 
-    public $timestamps =false;
+    public $timestamps = false;
+    public function getBooks()
+    {
+        return $this->belongsToMany(Books::class, 'user_book', 'user_id', 'book_id');
+    }
 }
