@@ -11,3 +11,5 @@ Route::get("/",[IndexController::class,"IndexPage"])->name("customer-index");
 Route::get("/login",[LoginController::class,"LoginPage"])->name("customer-login");
 //register Page --------------------------------
 Route::get("/register",[RegisterController::class,"RegisterPage"])->name("customer-register");
+//register Post 
+Route::post("/register",[RegisterController::class,"RegisterPost"])->name("customer-register-post");

@@ -10,4 +10,6 @@ class LoginController extends Controller
     public function Loginpage(){
         return view('customer.login');
     }
+    //üye ol post sayfası 
+   
 }
