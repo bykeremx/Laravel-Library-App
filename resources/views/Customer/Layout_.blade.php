@@ -38,23 +38,24 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#" aria-current="page">
+                            <a class="nav-link active" href="{{route("customer-index")}}" aria-current="page">
                                 <i class="fas fa-book    "></i>
-                                Kitaplar 
+                                Kitaplar
                                 </span></a>
                         </li>
                         <li class="nav-item">
-                            
+
                         </li>
                     </ul>
                     <ul class="navbar-nav me-right mt-2 mt-lg-0">
                         <li class="nav-item " style="margin-right:5px">
-                            <a class=" btn btn-outline-success rounded-0 shadow-sm " href="#" aria-current="page">
+                            <a class=" btn btn-outline-success rounded-0 shadow-sm " href="{{route("customer-register")}}" aria-current="page">
                                 Üye Ol
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class=" btn btn-outline-primary rounded-0" href="#" aria-current="page">
+                            <a class=" btn btn-outline-primary rounded-0" href="{{ route('customer-login') }}"
+                                aria-current="page">
                                 Giriş Yap !
                             </a>
                         </li>
