@@ -40,7 +40,7 @@
         @foreach ($books as $item)
             <div class="col-md-3">
                 <div class="card bg-dark text-white mb-3">
-                    <img src="{{ asset('Frontend/Customer/img/books-default.jpg') }}" class="card-img" alt="...">
+                    <img src={{ asset('uploads_book_img/'.$item->book_img)}} class="card-img" alt="...">
                     <div class="card-img-overlay">
                         <h6>
 

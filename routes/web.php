@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminIndexController;
+use App\Http\Controllers\Admin\AdminKitapController;
 use App\Http\Controllers\Customer\IndexController;
 use App\Http\Controllers\Customer\LoginController;
 use App\Http\Controllers\Customer\RegisterController;
+use App\Http\Middleware\AuthCheckMiddle;
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 
 // --- customer pages --------------------------------
@@ -21,3 +25,17 @@ Route::get("/logout",[LoginController::class,"Logout"])->name("customer-logout")
 Route::post("/kitabi-talep-et/",[IndexController::class,"borrowBook"])->name("customer-kitabi-talep-et");
 //kitaplarim 
 Route::get("/kitaplarim/",[IndexController::class,"myBooksPage"])->name("customer-kitaplarim");
+
+
+// --- admin pages --------------------------------
+Route::prefix("/admin")->middleware(AuthCheckMiddle::class)->middleware(IsAdmin::class)->group(function () {
+
+    Route::get("/",[AdminIndexController::class,"IndexPageAdmin"])->name("admin-index-page");
+
+    //kitap sil rotası
+    Route::get("/kitap/sil/{id}",[AdminKitapController::class,"DeleteBookId"])->name("sil-kitap-admin");
+    //admin kitap ekleme kısmı 
+    Route::get("/kitapekle",[AdminKitapController::class,"AddBookPage"])->name("admin-kitap-ekle");
+    //burda kitap ekleme kısmı rotası 
+    Route::post("/kitap-ekle",[AdminKitapController::class,"AddBookPost"])->name("admin-kitap-ekle");
+});
