@@ -103,4 +103,37 @@ class AdminKitapController extends Controller
             return redirect()->route("onay-bekleyen-kitaplar")->with('error', 'Kitap onaylanırken bir sorun oluştu.');
         }
     }
+
+    //kitap düzenle 
+    public function KitapDuzenlePage($id){
+        $data = [
+            "Categories" => Categories::all(),
+            "Publishings" => Publishing::all(),
+            "Book" => Books::where("id", $id)->first(),
+        ];
+        return view("Admin.kitapDuzenle")->with($data);
+    }
+    //kitap düzenle 
+    public function KitapDuzenlePost(Request $request, $id){
+        $updateBookDatas = [
+            "title" => $request->title,
+            "author" => $request->author,
+            "stock" => $request->stock,
+            "category_id" => $request->category_id,
+            "publishing_id" => $request->publishing_id,
+            "content" => $request->content,
+        ];
+
+        if ($request->hasFile("book_img")) {
+            $image = $request->file("book_img");
+            $imageName = time(). "_". $image->getClientOriginalName();
+            $image->move(public_path("uploads_book_img"), $imageName);
+            $updateBookDatas["book_img"] = $imageName;
+        }
+        if(Books::where("id", $id)->update($updateBookDatas)){
+            return redirect()->route("admin-index-page")->with('success', 'Kitap başarıyla düzenlendi.');
+        } else {
+            return redirect()->route("admin-index-page")->with('error', 'Kitap düzenlenirken bir sorun oluştu.');
+        }
+    }
 }

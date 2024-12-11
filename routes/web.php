@@ -44,4 +44,9 @@ Route::prefix("/admin")->middleware(AuthCheckMiddle::class)->middleware(IsAdmin:
     Route::get("/onaylanmis-kitaplar",[AdminKitapController::class,"OnaylanmisKitaplar"])->name("onaylanmis-kitaplar-admin");
     Route::get("/onay-bekleyen-kitaplar/{id}",[AdminKitapController::class,"OnaylaKitap"])->name("onayla-kitap-admin");
     Route::get("/kullanici-listesi",[AdminIndexController::class,"UserListPage"])->name("userList-page");
+    //kitap duzenle 
+    Route::get("/kitap-duzenle/{id}",[AdminKitapController::class,"KitapDuzenlePage"])->name("kitap-duzenle-admin");
+    Route::post("/kitap-duzenle/{id}",[AdminKitapController::class,"KitapDuzenlePost"])->name("kitap-duzenle-post");
+    //kullanıcı sil
+    // Route::get("/kullanici-sil/{id}",[AdminIndexController::class,"DeleteUser"])->name("kullanici-sil-admin");
 });

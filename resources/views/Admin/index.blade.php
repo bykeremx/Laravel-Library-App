@@ -23,9 +23,6 @@
         </h3>
     </div>
     <div class="row">
-        @include("components.FlashMessage");
-    </div>
-    <div class="row">
         <div class="table-responsive-sm">
             <table class="table table-striped-columns table-hover table-borderless table-light align-middle">
                 <thead class="table-light">
@@ -84,9 +81,9 @@
                         </td>
                         <td>
                             @if ($item->book_img)
-                                <img src="{{ asset($item->book_img) }}" class="img-thumbnail" alt="Kitap Fotoğrafı">
+                                <img src="{{ asset('uploads_book_img/'.$item->book_img) }}"  width="100" class="img-thumbnail" alt="Kitap Fotoğrafı">
                             @else
-                                <img src="{{ asset('storage/default.png') }}" class="img-thumbnail" alt="Kitap Fotoğrafı">
+                                <img src="{{ asset("Frontend/Customer/img/books-default.jpg") }}" class="img-thumbnail" alt="Kitap Fotoğrafı">
                             @endif
 
 
@@ -97,7 +94,7 @@
                             </a>
                         </td>
                         <td>
-                            <a name="" id="" class="btn btn-primary" href="#" role="button">
+                            <a name="" id="" class="btn btn-primary" href="{{route('kitap-duzenle-admin',['id'=>$item->id])}}" role="button">
                                 <i class="fas fa-edit    "></i>
                             </a>
 
