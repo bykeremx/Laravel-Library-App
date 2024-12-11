@@ -51,7 +51,7 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="#">
+                                <a class="nav-link " aria-current="page" href="{{ route('admin-kitap-ekle') }}">
                                     <i class="fas fa-plus    "></i>
                                     Kitap Ekle
                                 </a>
@@ -86,30 +86,43 @@
             <div class="row">
                 <!-- Hover added -->
                 <div class="col-md-3">
-                    <a name="" id="" class="btn btn-primary w-100 shadow-lg " href="#"
-                        role="button">Button</a>
+                    <a name="" id="" class="btn btn-primary w-100 shadow-lg "
+                        href="{{ route('admin-kitap-ekle') }}" role="button">
+                        <i class="fas fa-bookmark    "></i>
+                        Kitap Ekle</a>
+                </div>
+                <div class="col-md-3">
+                    <a name="" id="" class="btn btn-danger w-100 shadow-lg " href="{{route('userList-page')}}"
+                        role="button">
+                        <i class="fas fa-user    "></i>
+                        Kullanıcılar
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a name="" id="" class="btn btn-success w-100 shadow-lg " href="{{route('admin-index-page')}}"
+                        role="button">
+                        <i class="fas fa-book-open    "></i>
+                        Kitap Listesi
+                    </a>
 
                 </div>
                 <div class="col-md-3">
-                    <a name="" id="" class="btn btn-danger w-100 shadow-lg " href="#"
-                        role="button">Button</a>
-
-                </div>
-                <div class="col-md-3">
-                    <a name="" id="" class="btn btn-success w-100 shadow-lg " href="#"
-                        role="button">Button</a>
-
-                </div>
-                <div class="col-md-3">
-                    <a name="" id="" class="btn btn-warning text-dark w-100 shadow-lg " href="#"
-                        role="button">Button</a>
+                    <a name="" id="" class="btn btn-warning text-dark w-100 shadow-lg " href="{{route('onay-bekleyen-kitaplar')}}"
+                        role="button">
+                    <i class="fas fa-ticket    "></i>
+                    Kitap Onay İşlemleri
+                    </a>
 
                 </div>
 
 
             </div>
         </div>
+
         <div class="container">
+            <div class="row">
+                @include('components.FlashMessage')
+            </div>
             @yield('content')
         </div>
     </main>

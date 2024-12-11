@@ -80,7 +80,7 @@
 
                         </td>
                         <td>
-                            {{ $item->publishing }}
+                            {{ $item->Getpublishing->name }}
                         </td>
                         <td>
                             @if ($item->book_img)

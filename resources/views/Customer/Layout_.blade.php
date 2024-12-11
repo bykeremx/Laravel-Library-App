@@ -50,6 +50,14 @@
                                     Kitaplarım
                                     </span></a>
                             </li>
+                            @if (Auth::user()->is_admin == 1)
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{{ route('admin-index-page') }}" aria-current="page">
+                                        <i class="fas fa-user-check    "></i>
+                                        Admin Panel
+                                        </span></a>
+                                </li>
+                            @endif
                         @endif
 
                     </ul>
@@ -81,7 +89,7 @@
                         <ul class="navbar-nav me-right mt-2 mt-lg-0">
                             <li class="nav-item " style="margin-right:5px">
                                 <a class=" btn btn-outline-danger rounded-0 shadow-sm "
-                                    href="{{ route("customer-logout") }}" aria-current="page">
+                                    href="{{ route('customer-logout') }}" aria-current="page">
                                     <i class="fas fa-user    "></i>
                                     Çıkış Yap !
                                 </a>

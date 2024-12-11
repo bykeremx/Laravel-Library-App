@@ -23,8 +23,9 @@ class AdminKitapController extends Controller
         }
     }
     //kitap ekleme 
-    public function AddBookPage(){
-        $data =[
+    public function AddBookPage()
+    {
+        $data = [
             "Categories" => Categories::all(),
             "Publishings" => Publishing::all(),
         ];
@@ -32,30 +33,74 @@ class AdminKitapController extends Controller
     }
     //kitabın yüklendiği yani post edildiği fonksiyon 
 
-    public function AddBookPost(Request $request){
-        $newBookDatas=[
+    public function AddBookPost(Request $request)
+    {
+        // dd($request->all());
+        $newBookDatas = [
             "title" => $request->title,
             "author" => $request->author,
             "stock" => $request->stock,
             "category_id" => $request->category_id,
             "publishing_id" => $request->publishing_id,
-            "content"=>$request->content,
-            "book_img"=>null,
+            "content" => $request->content,
+            "book_img" => null,
         ];
 
-        if($request->hasFile("book_img")){
+        if ($request->hasFile("book_img")) {
             $image = $request->file("book_img");
-            $imageName = time()."_".$image->getClientOriginalName();
-            $image->move(public_path("uploads_book_img"),$imageName);
+            $imageName = time() . "_" . $image->getClientOriginalName();
+            $image->move(public_path("uploads_book_img"), $imageName);
             $newBookDatas["book_img"] = $imageName;
         }
-        if(Books::create($newBookDatas)){
+        if (Books::create($newBookDatas)) {
             return redirect()->route("admin-index-page")->with('success', 'Kitap başarıyla eklendi.');
-        }
-        else{
+        } else {
             return redirect()->route("admin-index-page")->with('error', 'Kitap eklenirken bir sorun oluştu.');
         }
+    }
 
-        
+    //onay bekleyen kitaplar 
+
+    public function OnayBekleyenKitaplarPage()
+    {
+
+        $data = [
+            "StatusBook" => UserBook::where("status","0")->get(),
+        ];
+        return view("Admin.onayBekleyenKitap")->with($data);
+    }
+
+    //onay bekleyen kitaplar 
+
+    public function OnaylanmisKitaplar()
+    {
+
+        $data = [
+            
+            "StatusBook" => UserBook::where("status","1")->get(),
+        ];
+        return view("Admin.onaylanmisKitaplar")->with($data);
+    }
+
+    //onayla kitap 
+    public function OnaylaKitap($id)
+    {
+        $onay_kitap = UserBook::where('id', $id)->first();
+
+        // Receive date is current time
+        $receiveDate = now();
+
+        // Return date is 14 days from now
+        $returnDate = now()->addDays(14);
+
+        if ($onay_kitap->update([
+            'status' => "1",
+            'receive_date' => $receiveDate,
+            'return_date' => $returnDate,
+        ])) {
+            return redirect()->route("onay-bekleyen-kitaplar")->with('success', 'Kitap başarıyla onaylandı.');
+        } else {
+            return redirect()->route("onay-bekleyen-kitaplar")->with('error', 'Kitap onaylanırken bir sorun oluştu.');
+        }
     }
 }

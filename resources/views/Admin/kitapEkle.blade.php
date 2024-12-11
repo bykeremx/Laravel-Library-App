@@ -53,8 +53,8 @@
 
                 <div class="mb-3">
                     <label for="category_id" class="form-label">Yayın Evi</label>
-                    <select class="form-select" id="category_id" name="category_id" required>
-                        <option selected disabled>Bir kategori seçin...</option>
+                    <select class="form-select" id="category_id" name="publishing_id" required>
+                        <option selected disabled>Bir Yayın Evi seçin...</option>
                         <!-- Kategoriler buraya dinamik olarak gelecek -->
                         @foreach ($Publishings as $item)
                             <option value="{{ $item->id }}">{{ ucwords($item->name) }}</option>

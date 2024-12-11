@@ -37,5 +37,11 @@ Route::prefix("/admin")->middleware(AuthCheckMiddle::class)->middleware(IsAdmin:
     //admin kitap ekleme kısmı 
     Route::get("/kitapekle",[AdminKitapController::class,"AddBookPage"])->name("admin-kitap-ekle");
     //burda kitap ekleme kısmı rotası 
-    Route::post("/kitap-ekle",[AdminKitapController::class,"AddBookPost"])->name("admin-kitap-ekle");
+    Route::post("/kitapekle",[AdminKitapController::class,"AddBookPost"])->name("admin-kitap-ekle-post");
+    //onay beykleyen kitaplar 
+    Route::get("/onay-bekleyen-kitaplar",[AdminKitapController::class,"OnayBekleyenKitaplarPage"])->name("onay-bekleyen-kitaplar");
+    //onaylanmış kitapları gör 
+    Route::get("/onaylanmis-kitaplar",[AdminKitapController::class,"OnaylanmisKitaplar"])->name("onaylanmis-kitaplar-admin");
+    Route::get("/onay-bekleyen-kitaplar/{id}",[AdminKitapController::class,"OnaylaKitap"])->name("onayla-kitap-admin");
+    Route::get("/kullanici-listesi",[AdminIndexController::class,"UserListPage"])->name("userList-page");
 });

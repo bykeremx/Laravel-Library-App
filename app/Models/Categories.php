@@ -9,6 +9,7 @@ class Categories extends Model
     protected $table = 'category';
     
     protected $fillable = [
+        'id',
         'name', 
     ];
     public $timestamps = false;
