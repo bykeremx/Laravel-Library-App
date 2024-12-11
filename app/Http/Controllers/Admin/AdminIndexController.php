@@ -23,4 +23,14 @@ class AdminIndexController extends Controller
         ];
         return view("Admin.kullaniciListesi")->with($data);
     }
+    //admin kullanıcı sil 
+    public function DeleteUser($id){
+        $user = User::where("id",$id)->first();
+        if($user){
+            $user->delete();
+            return redirect()->route("userList-page")->with('success', 'Kullanıcı başarıyla silindi.');
+        }else{
+            return redirect()->route("userList-page")->with('error', 'Böyle bir kullanıcı bulunamadı.');
+        }
+    }
 }

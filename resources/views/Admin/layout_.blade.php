@@ -26,11 +26,11 @@
 
 <body>
     <header>
-        <!-- place navbar here -->
-        <nav class="navbar navbar-light bg-light fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand p-3" href="#">
-                    <i class="fas fa-book    "></i>
+                    <i class="fas fa-book"></i>
                     <span class="badge bg-info">
                         {{ Auth::user()->name }}
                     </span>
@@ -51,21 +51,27 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="{{ route('admin-kitap-ekle') }}">
-                                    <i class="fas fa-plus    "></i>
+                                <a class="nav-link d-flex align-items-center" aria-current="page" href="{{ route('admin-kitap-ekle') }}">
+                                    <i class="fas fa-plus me-2"></i>
                                     Kitap Ekle
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="#">
-                                    <i class="fas fa-user    "></i>
+                                <a class="nav-link d-flex align-items-center" aria-current="page" href="{{ route('userList-page') }}">
+                                    <i class="fas fa-user me-2"></i>
                                     Kullanıcı İşlemleri
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="#">
-                                    <i class="fas fa-truck-loading    "></i>
+                                <a class="nav-link d-flex align-items-center" aria-current="page" href="{{ route('onay-bekleyen-kitaplar') }}">
+                                    <i class="fas fa-clock me-2"></i>
                                     Onay Bekleyenler
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center text-danger" aria-current="page" href="{{ route('customer-logout') }}">
+                                    <i class="fas fa-sign-out-alt me-2"></i>
+                                    Çıkış Yap
                                 </a>
                             </li>
                         </ul>
@@ -73,49 +79,40 @@
                 </div>
             </div>
         </nav>
-
     </header>
     <main>
         <div class="container" style="margin-top:100px; margin-bottom:30px">
-            <div class="row">
-                <h5>
-                    <i class="fas fa-star    "></i>
+            <div class="row mb-4">
+                <h5 class="text-muted">
+                    <i class="fas fa-star me-2"></i>
                     Hızlı İşlemler !
                 </h5>
             </div>
-            <div class="row">
-                <!-- Hover added -->
+            <div class="row g-3">
                 <div class="col-md-3">
-                    <a name="" id="" class="btn btn-primary w-100 shadow-lg "
-                        href="{{ route('admin-kitap-ekle') }}" role="button">
-                        <i class="fas fa-bookmark    "></i>
-                        Kitap Ekle</a>
+                    <a class="btn btn-primary w-100 shadow-lg d-flex align-items-center justify-content-center" href="{{ route('admin-kitap-ekle') }}">
+                        <i class="fas fa-bookmark me-2"></i>
+                        Kitap Ekle
+                    </a>
                 </div>
                 <div class="col-md-3">
-                    <a name="" id="" class="btn btn-danger w-100 shadow-lg " href="{{route('userList-page')}}"
-                        role="button">
-                        <i class="fas fa-user    "></i>
+                    <a class="btn btn-danger w-100 shadow-lg d-flex align-items-center justify-content-center" href="{{ route('userList-page') }}">
+                        <i class="fas fa-user me-2"></i>
                         Kullanıcılar
                     </a>
                 </div>
                 <div class="col-md-3">
-                    <a name="" id="" class="btn btn-success w-100 shadow-lg " href="{{route('admin-index-page')}}"
-                        role="button">
-                        <i class="fas fa-book-open    "></i>
+                    <a class="btn btn-success w-100 shadow-lg d-flex align-items-center justify-content-center" href="{{ route('admin-index-page') }}">
+                        <i class="fas fa-book-open me-2"></i>
                         Kitap Listesi
                     </a>
-
                 </div>
                 <div class="col-md-3">
-                    <a name="" id="" class="btn btn-warning text-dark w-100 shadow-lg " href="{{route('onay-bekleyen-kitaplar')}}"
-                        role="button">
-                    <i class="fas fa-ticket    "></i>
-                    Kitap Onay İşlemleri
+                    <a class="btn btn-warning w-100 shadow-lg d-flex align-items-center justify-content-center text-dark" href="{{ route('onay-bekleyen-kitaplar') }}">
+                        <i class="fas fa-ticket me-2"></i>
+                        Kitap Onay İşlemleri
                     </a>
-
                 </div>
-
-
             </div>
         </div>
 
@@ -126,8 +123,8 @@
             @yield('content')
         </div>
     </main>
-    <footer>
-        <!-- place footer here -->
+    <footer class="text-center py-4">
+        <p class="mb-0">&copy; {{ date('Y') }} Kütüphane Yönetim Sistemi</p>
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

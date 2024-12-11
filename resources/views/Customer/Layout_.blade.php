@@ -45,7 +45,7 @@
                         </li>
                         @if (Auth::check())
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('customer-index') }}" aria-current="page">
+                                <a class="nav-link active" href="{{ route('customer-kitaplarim') }}" aria-current="page">
                                     <i class="fas fa-book    "></i>
                                     Kitaplarım
                                     </span></a>

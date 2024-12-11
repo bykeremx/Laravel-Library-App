@@ -23,7 +23,6 @@
                         <th><i class="fas fa-envelope"></i> E-posta</th>
                         <th><i class="fas fa-user-shield"></i> Admin Durumu</th>
                         <th><i class="fas fa-trash"></i> Sil</th>
-                        <th><i class="fas fa-trash"></i> Düzenle</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,17 +45,11 @@
                                 @endif
                             </td>
                             <td>
-                                <a name="" id="" class="btn btn-danger" href="#" role="button">
+                                <a name="" id="" class="btn btn-danger"
+                                    href="{{ route('kullanici-sil-admin', ['id' => $user->id]) }}" role="button">
                                     <i class="fas fa-trash    "></i>
                                 </a>
                             </td>
-                            <td>
-                                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                                    <i class="fas fa-edit    "></i>
-                                </a>
-
-                            </td>
-
                         </tr>
                     @endforeach
                 </tbody>

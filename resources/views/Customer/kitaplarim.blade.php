@@ -61,16 +61,6 @@
             Mecvut Kitaplar
         </h5>
     </div>
-    <div class="row mt-3">
-        <div class="mb-3">
-            <label for="" class="form-label">
-                <i class="fas fa-search    "></i>
-                Kitap Arayın</label>
-            <input type="text" name="" id="" class="form-control" placeholder="Kitap Adı ... "
-                aria-describedby="helpId" />
-            <small id="helpId" class="text-muted"><b>*Lütfen Bir Kitap Adı Girin*</b></small>
-        </div>
-    </div>
     <div class="row">
         @foreach ($userbooks as $item)
             <div class="col-md-3 ">
@@ -78,10 +68,8 @@
                     <img src="{{ asset('Frontend/Customer/img/books-default.jpg') }}" class="card-img" alt="...">
                     <div class="card-img-overlay">
                         <h6>
-
                             <i class="fas fa-user    "></i>
                             {{ $item->book->author }}
-
                         </h6>
                         <h5 class="card-title">
                             <span class="badge bg-success">

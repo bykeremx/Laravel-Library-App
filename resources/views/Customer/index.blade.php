@@ -27,14 +27,6 @@
         </h5>
     </div>
     <div class="row mt-3">
-        <div class="mb-3">
-            <label for="" class="form-label">
-                <i class="fas fa-search    "></i>
-                Kitap Arayın</label>
-            <input type="text" name="" id="" class="form-control" placeholder="Kitap Adı ... "
-                aria-describedby="helpId" />
-            <small id="helpId" class="text-muted"><b>*Lütfen Bir Kitap Adı Girin*</b></small>
-        </div>
     </div>
     <div class="row">
         @foreach ($books as $item)
